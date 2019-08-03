@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -16,6 +17,7 @@ import javax.persistence.OneToOne;
 @AllArgsConstructor
 public class RaceEntity {
     @Column(name = "race_name")
+    @Id
     private String raceName;
 
     @Column(name = "physical_desc")
@@ -42,7 +44,7 @@ public class RaceEntity {
     @Column(name = "femaile_name")
     private String femaileName;
 
-    @Column(name = "attributes_entity")
+    @Column(name = "attribute_id")
     @OneToOne
     private AttributesEntity attributesEntity;
 }

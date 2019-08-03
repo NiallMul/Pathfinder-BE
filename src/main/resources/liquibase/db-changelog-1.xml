@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="Create_Race_Table" author="Niall">
+        <createTable tableName="race">
+            <column name="race_name" type="VARCHAR">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="physical_desc" type="VARCHAR"/>
+            <column name="society" type="VARCHAR"/>
+            <column name="relations" type="VARCHAR"/>
+            <column name="alignment" type="VARCHAR"/>
+            <column name="religion" type="VARCHAR"/>
+            <column name="adventurers" type="VARCHAR"/>
+            <column name="male_name" type="VARCHAR"/>
+            <column name="female_name" type="VARCHAR"/>
+            <column name="attribute_id" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="attribute_table" author="Niall">
+        <createTable tableName="attributes">
+            <column name="id" value="INTEGER">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="strength" value="INTEGER"/>
+            <column name="dexterity" value="INTEGER"/>
+            <column name="constitution" value="INTEGER"/>
+            <column name="intelligence" value="INTEGER"/>
+            <column name="wisdom" value="INTEGER"/>
+            <column name="race_name" type="VARCHAR"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="foreign keys for race and attributes" author="Niall">
+        <addForeignKeyConstraint baseTableName="race" baseColumnNames="attribute_id" constraintName="race_att_fk"
+                                 referencedTableName="attribute_table"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="attributes" baseColumnNames="race_name" constraintName="att_race_fk"
+                                 referencedTableName="race"
+                                 referencedColumnNames="race_name"/>
+    </changeSet>
+</databaseChangeLog>
