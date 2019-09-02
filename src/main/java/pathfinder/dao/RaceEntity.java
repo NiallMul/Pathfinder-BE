@@ -39,8 +39,8 @@ public class RaceEntity {
     @Column(name = "maleName")
     private String maleName;
 
-    @Column(name = "femaile_name")
-    private String femaileName;
+    @Column(name = "female_name")
+    private String femaleName;
 
     @Column(name = "attributes_entity")
     @OneToOne
