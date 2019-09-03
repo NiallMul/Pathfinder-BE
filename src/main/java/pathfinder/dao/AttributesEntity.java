@@ -1,35 +1,44 @@
 package pathfinder.dao;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+class AttributesEntity {
 
-public class AttributesEntity {
     @Id
     private Integer id;
+
     @Column
     private Integer strength;
+
     @Column
     private Integer dexterity;
+
     @Column
     private Integer constitution;
+
     @Column
     private Integer intelligence;
+
     @Column
     private Integer wisdom;
-    @OneToOne
-    @Column
-    private String race;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "race_name")
+    private RaceEntity race;
 }

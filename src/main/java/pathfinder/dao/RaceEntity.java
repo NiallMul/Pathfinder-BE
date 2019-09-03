@@ -1,14 +1,17 @@
 package pathfinder.dao;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 @Getter
@@ -44,7 +47,7 @@ public class RaceEntity {
     @Column(name = "female_name")
     private String femaleName;
 
-    @Column(name = "attribute_id")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "attribute_id")
     private AttributesEntity attributesEntity;
 }
