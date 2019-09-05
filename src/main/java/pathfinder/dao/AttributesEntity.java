@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-class AttributesEntity {
+public class AttributesEntity {
 
     @Id
     private Integer id;
