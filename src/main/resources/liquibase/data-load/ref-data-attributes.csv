@@ -1,0 +1,3 @@
+id,strength,dexterity,constitution,intelligence,charisma,wisdom,race
+1,0,0,2,0,2,-2,0,DWARVES
+2,0,2,-2,2,0,0,ELVES

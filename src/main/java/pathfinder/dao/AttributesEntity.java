@@ -38,6 +38,9 @@ public class AttributesEntity {
     @Column
     private Integer wisdom;
 
+    @Column
+    private Integer charisma;
+
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "race_name")
     private RaceEntity race;

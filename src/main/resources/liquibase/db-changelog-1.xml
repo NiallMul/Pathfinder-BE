@@ -46,4 +46,9 @@
                                  referencedTableName="race"
                                  referencedColumnNames="race_name"/>
     </changeSet>
+    <changeSet id="adding charisma to attributes table" author="Niall">
+        <addColumn tableName="attributes">
+            <column name="charisma" type="INTEGER"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

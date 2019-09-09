@@ -41,7 +41,7 @@ public class RaceEntity {
     @Column(name = "adventurers")
     private String adventurers;
 
-    @Column(name = "maleName")
+    @Column(name = "male_Name")
     private String maleName;
 
     @Column(name = "female_name")

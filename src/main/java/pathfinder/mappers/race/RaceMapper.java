@@ -13,7 +13,6 @@ import pathfinder.models.race.RaceModel;
 public interface RaceMapper {
 
     @Mapping(source = "raceAttribute", target = "attributesEntity")
-    @Mapping(source = "")
     RaceEntity modelRaceToEntity(RaceModel race);
 
     @InheritInverseConfiguration(name = "modelRaceToEntity")
