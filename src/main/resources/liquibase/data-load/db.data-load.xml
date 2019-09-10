@@ -6,7 +6,7 @@
         <preConditions>
             <tableExists tableName="race"/>
         </preConditions>
-        <loadUpdateData tableName="race" file="ref-data-race.csv" relativeToChangelogFile="true" primaryKey="race_name" separator=",">
+        <loadUpdateData tableName="race" file="ref-data-race.csv" relativeToChangelogFile="true" primaryKey="race_name">
             <column name="race_name" type="STRING"/>
             <column name="physical_desc" type="STRING"/>
             <column name="society" type="STRING"/>
@@ -23,14 +23,31 @@
         <preConditions>
             <tableExists tableName="attributes"/>
         </preConditions>
-        <loadUpdateData tableName="attributes" file="ref-data-attributes.csv" relativeToChangelogFile="true" primaryKey="id"/>
+        <loadUpdateData tableName="attributes" file="ref-data-attributes.csv" relativeToChangelogFile="true" primaryKey="id">
+            <column name="id" type="NUMERIC"/>
+            <column name="strength" type="NUMERIC"/>
+            <column name="dexterity" type="NUMERIC"/>
+            <column name="constitution" type="NUMERIC"/>
+            <column name="intelligence" type="NUMERIC"/>
+            <column name="charisma" type="NUMERIC"/>
+            <column name="wisdom" type="NUMERIC"/>
+            <column name="race_name" type="STRING"/>
+        </loadUpdateData>
     </changeSet>
 
-<!--    <changeSet id="data-load-foreign-keys" author="Niall Mulready" logicalFilePath="data_load/data_load-fk.xml" runOnChange="true">-->
-<!--        <preConditions>-->
-<!--            <tableExists tableName="race"/>-->
-<!--            <tableExists tableName="attributes"/>-->
-<!--        </preConditions>-->
-<!--        <loadUpdateData tableName="race" file="ref-data-race-fk.csv" relativeToChangelogFile="true" primaryKey="id"/>-->
-<!--    </changeSet>-->
+    <changeSet id="data-load-foreign-keys" author="Niall Mulready" logicalFilePath="data_load/data_load-fk.xml" runOnChange="true">
+        <preConditions>
+            <tableExists tableName="race"/>
+            <tableExists tableName="attributes"/>
+        </preConditions>
+        <loadUpdateData tableName="race" file="ref-data-race-fk-attributes.csv" relativeToChangelogFile="true" primaryKey="race_name">
+            <column name="race_name" type="STRING"/>
+            <column name="attribute_id" type="NUMERIC"/>
+        </loadUpdateData>
+        <loadUpdateData tableName="attributes" file="ref-data-attributes-fk-race.csv" relativeToChangelogFile="true" primaryKey="id">
+            <column name="id" type="NUMERIC"/>
+            <column name="race_name" type="STRING"/>
+        </loadUpdateData>
+
+    </changeSet>
 </databaseChangeLog>
