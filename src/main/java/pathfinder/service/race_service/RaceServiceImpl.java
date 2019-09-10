@@ -34,6 +34,13 @@ public class RaceServiceImpl implements RaceService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public RaceModel getRace(String name) {
+        return raceMapper.entityRaceToModel(repository.findRaceEntityByRaceName(name).orElse(new RaceEntity()));
+    }
+
+    @Override
+    @Transactional
     public String addRace(RaceModel race) {
         if(race!=null){
             RaceEntity entity = raceMapper.modelRaceToEntity(race);

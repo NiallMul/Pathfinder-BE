@@ -1,13 +1,12 @@
 package pathfinder.dao;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +22,9 @@ import lombok.Setter;
 public class AttributesEntity {
 
     @Id
-    private Integer id;
+    @GeneratedValue(generator = "UUID-TEST")
+    @GenericGenerator(name = "UUID-TEST", strategy = "uuid2")
+    private String id;
 
     @Column
     private Integer strength;
@@ -42,8 +43,4 @@ public class AttributesEntity {
 
     @Column
     private Integer charisma;
-
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "race_name")
-    private RaceEntity race;
 }

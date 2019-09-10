@@ -11,7 +11,6 @@ import pathfinder.models.race.RaceAttribute;
 public interface AttributesMapper {
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "race", ignore = true)
     AttributesEntity mapAttributesToEntity(RaceAttribute raceAttribute);
 
     @InheritInverseConfiguration(name = "mapAttributesToEntity")
