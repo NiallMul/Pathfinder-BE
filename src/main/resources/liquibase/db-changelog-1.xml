@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="Create_Race_Table" author="Niall">
+        <createTable tableName="race">
+            <column name="race_name" type="VARCHAR(30)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="physical_desc" type="VARCHAR(500)"/>
+            <column name="society" type="VARCHAR(500)"/>
+            <column name="relations" type="VARCHAR(500)"/>
+            <column name="alignment" type="VARCHAR(500)"/>
+            <column name="religion" type="VARCHAR(500)"/>
+            <column name="adventurers" type="VARCHAR(500)"/>
+            <column name="male_name" type="VARCHAR(500)"/>
+            <column name="female_name" type="VARCHAR(500)"/>
+            <column name="attribute_id" type="VARCHAR(36)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="attribute_table" author="Niall">
+        <createTable tableName="attributes">
+            <column name="id" type="VARCHAR(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="strength" type="INTEGER"/>
+            <column name="dexterity" type="INTEGER"/>
+            <column name="constitution" type="INTEGER"/>
+            <column name="intelligence" type="INTEGER"/>
+            <column name="wisdom" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="foreign keys for race and attributes" author="Niall">
+        <addForeignKeyConstraint constraintName="race_att_fk"
+                                 baseTableName="race"
+                                 baseColumnNames="attribute_id"
+                                 referencedTableName="attributes"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet id="adding charisma to attributes table" author="Niall">
+        <addColumn tableName="attributes">
+            <column name="charisma" type="INTEGER"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

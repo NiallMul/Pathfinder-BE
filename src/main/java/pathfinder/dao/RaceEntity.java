@@ -1,21 +1,28 @@
 package pathfinder.dao;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "race")
 public class RaceEntity {
     @Column(name = "race_name")
+    @Id
     private String raceName;
 
     @Column(name = "physical_desc")
@@ -36,13 +43,13 @@ public class RaceEntity {
     @Column(name = "adventurers")
     private String adventurers;
 
-    @Column(name = "maleName")
+    @Column(name = "male_Name")
     private String maleName;
 
     @Column(name = "female_name")
     private String femaleName;
 
-    @Column(name = "attributes_entity")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "attribute_id")
     private AttributesEntity attributesEntity;
 }

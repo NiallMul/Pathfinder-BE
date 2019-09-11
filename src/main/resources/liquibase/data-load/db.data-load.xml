@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet id="data-load-attributes" author="Niall Mulready" logicalFilePath="data_load/data_load-attributes.xml" runOnChange="true">
+        <preConditions>
+            <tableExists tableName="attributes"/>
+        </preConditions>
+        <loadUpdateData tableName="attributes" file="ref-data-attributes.csv" relativeToChangelogFile="true" primaryKey="id">
+            <column name="id" type="STRING"/>
+            <column name="strength" type="NUMERIC"/>
+            <column name="dexterity" type="NUMERIC"/>
+            <column name="constitution" type="NUMERIC"/>
+            <column name="intelligence" type="NUMERIC"/>
+            <column name="charisma" type="NUMERIC"/>
+            <column name="wisdom" type="NUMERIC"/>
+        </loadUpdateData>
+    </changeSet>
+    <changeSet id="data-load-races" author="Niall Mulready" logicalFilePath="data_load/data_load-race.xml" runOnChange="true">
+        <preConditions>
+            <tableExists tableName="race"/>
+        </preConditions>
+        <loadUpdateData tableName="race" file="ref-data-race.csv" relativeToChangelogFile="true" primaryKey="race_name">
+            <column name="race_name" type="STRING"/>
+            <column name="physical_desc" type="STRING"/>
+            <column name="society" type="STRING"/>
+            <column name="relations" type="STRING"/>
+            <column name="alignment" type="STRING"/>
+            <column name="religion" type="STRING"/>
+            <column name="adventurers" type="STRING"/>
+            <column name="male_name" type="STRING"/>
+            <column name="female_name" type="STRING"/>
+            <column name="attribute_id" type="STRING"/>
+        </loadUpdateData>
+    </changeSet>
+</databaseChangeLog>
