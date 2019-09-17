@@ -8,5 +8,5 @@ pom.xml.next
 release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
-.mvn/timing.properties
+.mvn/timing.propertiesK
 .mvn/wrapper/maven-wrapper.jar
