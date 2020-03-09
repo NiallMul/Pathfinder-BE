@@ -19,6 +19,7 @@ public enum ClassSkills {
     HANDLE_ANIMAL("handle_animal(cha)"),
     HEAL("heal(wis)"),
     INTIMIDATE("intimidate(cha)"),
+    KNOWLEDGE_ALL("knowledge(all)(int)"),
     KNOWLEDGE_TRAINED_ONLY("knowledge(int)"),
     LINGUISTICS_TRAINED_ONLY("linguistics(int)"),
     PERCEPTION("perception(wis)"),
