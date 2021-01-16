@@ -33,4 +33,17 @@
             <column name="attribute_id" type="STRING"/>
         </loadUpdateData>
     </changeSet>
+    <changeSet id="data-load-classes" author="Niall Mulready" logicalFilePath="data_load/data_load-classes.xml" runOnChange="true">
+        <preConditions>
+            <tableExists tableName="classes"/>
+        </preConditions>
+        <loadUpdateData tableName="classes" file="ref-data-classes.csv" relativeToChangelogFile="true" primaryKey="name">
+            <column name="name" type="STRING"/>
+            <column name="role" type="STRING"/>
+            <column name="alignment" type="STRING"/>
+            <column name="hitdie" type="NUMERIC"/>
+            <column name="skills_per_level" type="NUMERIC"/>
+            <column name="weapons_armour_proficiency" type="STRING"/>
+        </loadUpdateData>
+    </changeSet>
 </databaseChangeLog>

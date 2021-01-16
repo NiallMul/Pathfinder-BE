@@ -1,17 +1,16 @@
 package pathfinder.service.race_service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import pathfinder.dao.RaceEntity;
 import pathfinder.dao.repository.RaceRepository;
 import pathfinder.mappers.race.RaceMapper;
 import pathfinder.models.race.RaceModel;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RaceServiceImpl implements RaceService {
@@ -28,9 +27,8 @@ public class RaceServiceImpl implements RaceService {
     @Transactional(readOnly = true)
     public List<RaceModel> getAllRaces() {
         List<RaceModel> raceList;
-        Optional<List<RaceEntity>> raceDtoList = Optional.ofNullable(repository.findAll());
-        raceList = raceMapper.mapRaceEntitiesToModels(raceDtoList.orElseGet(ArrayList::new));
-        return raceList;
+        Optional<List<RaceEntity>> raceDtoList = Optional.of(repository.findAll());
+        return raceMapper.mapRaceEntitiesToModels(raceDtoList.orElseGet(ArrayList::new));
     }
 
     @Override
@@ -42,7 +40,7 @@ public class RaceServiceImpl implements RaceService {
     @Override
     @Transactional
     public String addRace(RaceModel race) {
-        if(race!=null){
+        if (race != null) {
             RaceEntity entity = raceMapper.modelRaceToEntity(race);
             repository.save(entity);
             return "Success";
