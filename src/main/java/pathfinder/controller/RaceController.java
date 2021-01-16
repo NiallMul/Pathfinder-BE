@@ -21,7 +21,6 @@ public class RaceController {
         this.raceService = raceService;
     }
 
-    @GetMapping
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<List<RaceModel>> get(){
         return ResponseEntity.ok(raceService.getAllRaces());
