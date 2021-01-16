@@ -14,7 +14,23 @@
             <column name="hitdie" type="number(2)"/>
             <column name="skills_per_level" type="VARCHAR(500)"/>
             <column name="weapons_armour_proficiency" type="VARCHAR(500)"/>
-            <column name="attribute_id" type="VARCHAR(36)"/>
         </createTable>
+    </changeSet>
+    <changeSet id="updating column name" author="niall">
+        <renameColumn tableName="classes" oldColumnName="hitdie" newColumnName="hit_die" columnDataType="number(2)"/>
+    </changeSet>
+    <changeSet id="updating column data" author="niall">
+        <renameColumn tableName="classes" oldColumnName="skills_per_level" newColumnName="skills_per_level"
+                      columnDataType="number(2)"/>
+    </changeSet>
+    <changeSet id="updating column size" author="niall">
+        <renameColumn tableName="classes" oldColumnName="weapons_armour_proficiency"
+                      newColumnName="weapons_armour_proficiency"
+                      columnDataType="VARCHAR(5000)"/>
+    </changeSet>
+    <changeSet id="updating column role size" author="niall">
+        <renameColumn tableName="classes" oldColumnName="role"
+                      newColumnName="role"
+                      columnDataType="VARCHAR(5000)"/>
     </changeSet>
 </databaseChangeLog>

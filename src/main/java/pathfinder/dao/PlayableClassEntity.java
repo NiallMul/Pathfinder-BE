@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -25,7 +26,7 @@ public class PlayableClassEntity {
     @Column
     private String alignment;
 
-    @Column
+    @Column(name = "hit_die")
     private Integer hitDie;
 
     @Column(name = "skills_per_level")
@@ -34,6 +35,14 @@ public class PlayableClassEntity {
     @Column(name = "weapons_armour_proficiency")
     private String weaponAndArmourPref;
 
-    @OneToMany(mappedBy = "playableClass")
-    private List<ClassSkills> skillList;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "class_skills",
+            joinColumns = {
+                    @JoinColumn(name = "class_name", referencedColumnName = "name",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "skill_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)})
+    private Set<Skills> skills = new HashSet<>();
+
 }

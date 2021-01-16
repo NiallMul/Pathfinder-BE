@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -13,15 +15,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "skills")
-public class ClassSkills {
+public class Skills {
+
     @Id
     private Integer id;
 
     @Column
     private String skill;
 
-    @Column
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "name")
-    private PlayableClassEntity playableClass;
+    @ManyToMany(mappedBy = "skills", fetch = FetchType.LAZY)
+    private Set<PlayableClassEntity> classes = new HashSet<>();
 }

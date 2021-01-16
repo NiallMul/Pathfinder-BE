@@ -28,8 +28,7 @@ public class RaceServiceImpl implements RaceService {
     public List<RaceModel> getAllRaces() {
         List<RaceModel> raceList;
         Optional<List<RaceEntity>> raceDtoList = Optional.of(repository.findAll());
-        raceList = raceMapper.mapRaceEntitiesToModels(raceDtoList.orElseGet(ArrayList::new));
-        return raceList;
+        return raceMapper.mapRaceEntitiesToModels(raceDtoList.orElseGet(ArrayList::new));
     }
 
     @Override
@@ -41,7 +40,7 @@ public class RaceServiceImpl implements RaceService {
     @Override
     @Transactional
     public String addRace(RaceModel race) {
-        if(race!=null){
+        if (race != null) {
             RaceEntity entity = raceMapper.modelRaceToEntity(race);
             repository.save(entity);
             return "Success";
