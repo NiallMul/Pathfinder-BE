@@ -1,8 +1,8 @@
 package pathfinder.service.race_service;
 
-import java.util.List;
-
 import pathfinder.models.race.RaceModel;
+
+import java.util.List;
 
 public interface RaceService {
     List<RaceModel> getAllRaces();
@@ -10,4 +10,6 @@ public interface RaceService {
     RaceModel getRace(String name);
 
     String addRace(RaceModel race);
+
+    List<String> getAllRaceNames();
 }

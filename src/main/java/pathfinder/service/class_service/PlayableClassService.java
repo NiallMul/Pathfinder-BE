@@ -1,9 +1,13 @@
 package pathfinder.service.class_service;
 
-import java.util.List;
-
 import pathfinder.models.playable_class.PlayableClassModel;
+
+import java.util.List;
 
 public interface PlayableClassService {
     List<PlayableClassModel> listAllClasses();
+
+    PlayableClassModel getClassByName(String name);
+
+    List<String> getAllClasses();
 }

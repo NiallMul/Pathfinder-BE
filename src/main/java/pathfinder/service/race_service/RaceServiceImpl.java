@@ -11,6 +11,7 @@ import pathfinder.models.race.RaceModel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RaceServiceImpl implements RaceService {
@@ -46,5 +47,11 @@ public class RaceServiceImpl implements RaceService {
             return "Success";
         }
         return "Race sent was null";
+    }
+
+    @Override
+    public List<String> getAllRaceNames() {
+        Optional<List<String>> raceList = Optional.of(repository.findAll().stream().map(RaceEntity::getRaceName).collect(Collectors.toList()));
+        return raceList.get();
     }
 }

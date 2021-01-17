@@ -22,6 +22,7 @@ public class RaceController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping
     public ResponseEntity<List<RaceModel>> get(){
         return ResponseEntity.ok(raceService.getAllRaces());
     }
@@ -35,5 +36,11 @@ public class RaceController {
     @ApiOperation(value = "Register race", notes = "Adds a new race entry to the db")
     public ResponseEntity<String> addRace(@RequestBody RaceModel race){
         return ResponseEntity.ok(raceService.addRace(race));
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("racelist")
+    public ResponseEntity<List<String>> getClassList(){
+        return ResponseEntity.ok(raceService.getAllRaceNames());
     }
 }

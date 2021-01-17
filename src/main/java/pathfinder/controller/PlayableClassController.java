@@ -16,17 +16,24 @@ public class PlayableClassController {
 
     private final PlayableClassService playableClassService;
 
-    public PlayableClassController(PlayableClassService playableClassService){
+    public PlayableClassController(PlayableClassService playableClassService) {
         this.playableClassService = playableClassService;
     }
 
     @GetMapping
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<List<PlayableClassModel>> getClasses(){
+    public ResponseEntity<List<PlayableClassModel>> getClasses() {
         return ResponseEntity.ok(playableClassService.listAllClasses());
     }
+
     @GetMapping(params = "className")
-    public ResponseEntity<PlayableClassModel> getClass(String className){
-        return ResponseEntity.ok(new PlayableClassModel());
+    public ResponseEntity<PlayableClassModel> getClass(String className) {
+        return ResponseEntity.ok(playableClassService.getClassByName(className));
+    }
+
+    @GetMapping("classlist")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<List<String>> getClassList(){
+        return ResponseEntity.ok(playableClassService.getAllClasses());
     }
 }

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface PlayableClassRepository extends JpaRepository<PlayableClassEntity, String> {
     List<PlayableClassEntity> findAll();
+
+    PlayableClassEntity findByName(String name);
 }
